@@ -270,10 +270,7 @@ document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('clic
 
 // Reset + share
 document.getElementById('resetBtn').addEventListener('click', ()=>go(1));
-document.getElementById('shareWa').addEventListener('click', ()=>{
-  const msg = encodeURIComponent('🌹 شوفي المفاجأة: ' + location.href);
-  window.open('https://wa.me/?text='+msg,'_blank');
-});
+
 
 // Falling roses
 function spawnRoses(count=26){
