@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>صفحة حب 🌹</title>
+<title> بحبك يا عليااااا 🌹</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -113,8 +113,8 @@
   <!-- Scene 1: password -->
   <section class="scene active" id="s1">
     <div class="card">
-      <h2>ادخل كلمة السر 🌹</h2>
-      <p class="subtitle">اكتب السر اللى نتفقنا عليه</p>
+      <h2>اكتبي كلمة السر 🌹</h2>
+      <p class="subtitle">اكتبي تاريخ اول يوم عرفنا بعض فيه </p>
       <input id="pw" class="input" placeholder="اكتب هنا…" type="password" autocomplete="off">
       <div class="row"><button class="btn" id="unlock">فتح</button></div>
     </div>
@@ -134,7 +134,7 @@
           <path fill="#37b24d" d="M64 86c-10 8-22 12-30 10 8-10 18-14 30-10z"/>
         </g>
       </svg>
-      <div style="margin-top:8px"><button class="btn ghost" id="roseHint">لو ما اشتغلتش اضغط هنا</button></div>
+      <div style="margin-top:8px"><button class="btn ghost" id="roseHint">لو ما اشتغلتش اصلا دوسي هنا</button></div>
     </div>
   </section>
 
@@ -146,18 +146,18 @@
         وكلامك بيدّيني طاقة وحُب. إنتِ مش بس جزء من حياتي، إنتِ حياتي كلها.
         قلبي ليكي، وهفضل أحبّك طول العمر 🌹
       </div>
-      <div class="row"><button class="btn" data-next>التالي</button></div>
+      <div class="row"><button class="btn" data-next>دوسي هنا</button></div>
     </div>
   </section>
 
   <!-- Scene 4: memories + song (YouTube) -->
   <section class="scene" id="s4">
     <div class="card">
-      <div class="memories-title">🎀 Our Memories</div>
+      <div class="memories-title">🎀</div>
       <div class="video-embed">
         <iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?rel=0" allow="accelerometer; autoplay; encrypted-media; clipboard-write; picture-in-picture" allowfullscreen></iframe>
       </div>
-      <div class="row"><button class="btn" data-next>التالي</button></div>
+      <div class="row"><button class="btn" data-next>دوسي هنا اول ما الفيديو يشتغل</button></div>
     </div>
   </section>
 
@@ -166,7 +166,7 @@
     <div class="card" style="background:linear-gradient(180deg,#ffd6e3,#ffc1d6)">
       <div class="big-title">على طول 🌹</div>
       <p style="text-align:center;margin:0 0 8px;color:#6b2a4f">مهما الدنيا ودّتنا فين… هتفضلي أغلى حد عندي.</p>
-      <div class="row"><button class="btn" data-next>التالي</button></div>
+      <div class="row"><button class="btn" data-next>دوسي هنا</button></div>
     </div>
   </section>
 
@@ -177,8 +177,8 @@
         أماني وبيتي اللي بارتاح فيه… هو انتي. لو زعلتك في يوم، سامحيني.
         نبدأ صفحة جديدة؟ 🌹
       </div>
-      <div class="row"><button class="btn" id="resetBtn">إعادة</button><button class="btn ghost" id="shareWa">مشاركة واتساب</button></div>
-      <p class="footer-note">عملتها لك بسرعة — لو عايز أي تعديل ابعتلي</p>
+      <div class="row"><button class="btn" id="resetBtn">Refresh</button><button class="btn ghost" id="shareWa"></button></div>
+      <p class="footer-note"> </p>
     </div>
   </section>
 </div>
@@ -199,7 +199,7 @@ document.getElementById('unlock').addEventListener('click', ()=>{
   if(val === PASSWORD){
     go(2);
   }else{
-    alert('كلمة السر غلط 😅');
+    alert('كلمة السر غلط يا كلبة');
   }
 });
 
@@ -212,7 +212,7 @@ document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('clic
 }));
 document.getElementById('resetBtn').addEventListener('click', ()=>go(1));
 document.getElementById('shareWa').addEventListener('click', ()=>{
-  const msg = encodeURIComponent('🌹 شوف الصفحة اللى عملتها لك: ' + location.href);
+  const msg = encodeURIComponent('🌹 شوفي المفاجأة اللى عملتهالك: ' + location.href);
   window.open('https://wa.me/?text='+msg,'_blank');
 });
 
