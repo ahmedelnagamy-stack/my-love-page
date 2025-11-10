@@ -305,12 +305,17 @@ function show(i){
 }
 document.getElementById('nextBtn').addEventListener('click', ()=>show(idx+1));
 document.getElementById('prevBtn').addEventListener('click', ()=>show(idx-1));
+  setInterval(()=>show(idx+1), 2000);
+
 // optional: keyboard arrows
 window.addEventListener('keydown', (e)=>{
   if(!document.getElementById('s4').classList.contains('active')) return;
   if(e.key==='ArrowRight') show(idx+1);
   if(e.key==='ArrowLeft') show(idx-1);
 });
+
+
+  
 </script>
 </body>
 </html>
