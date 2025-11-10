@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For You 💗</title>
+<title>صفحة حب 🌹</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg1:#ffb3c7;
-    --bg2:#f8a9bf;
+    --bg1:#ffd6e3;
+    --bg2:#ffc1d6;
     --card:#ffffff;
     --accent:#ff4d86;
     --accent-2:#ff6fa3;
@@ -22,20 +22,47 @@
     font-family:"Cairo",system-ui,Arial;
     color:var(--text);
     background:linear-gradient(180deg,var(--bg1),var(--bg2));
-    min-height:100svh;
+    min-height:100vh;
     display:flex;
     align-items:center;
     justify-content:center;
     padding:20px;
+    position:relative;
+    overflow-x:hidden;
   }
-  .wrap{width:min(720px,100%);}
+
+  /* Falling roses background (fullscreen) */
+  .roses-bg{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    overflow:hidden;
+    z-index:0;
+  }
+  .rose{
+    position:absolute;
+    font-size:26px;
+    animation:fall linear infinite;
+    opacity:0.95;
+    transform-origin:center;
+    will-change:transform,opacity;
+  }
+  @keyframes fall{
+    0%{transform:translateY(-40px) rotate(0deg) scale(1); opacity:1}
+    100%{transform:translateY(110vh) rotate(360deg) scale(0.9); opacity:0.25}
+  }
+
+  .wrap{width:min(720px,100%); z-index:2; position:relative;}
   .card{
     background:var(--card);
     border-radius:18px;
-    box-shadow:0 18px 45px rgba(0,0,0,.13);
+    box-shadow:0 18px 45px rgba(0,0,0,.12);
     padding:22px 20px;
   }
-  h1,h2{margin:0 0 10px}
+  h2{margin:0 0 10px;color:#7d2251;font-size:26px}
   .subtitle{color:var(--muted);font-size:14px}
   .input{
     width:100%;
@@ -53,7 +80,7 @@
     color:#fff;
     background:linear-gradient(180deg,var(--accent),var(--accent-2));
     cursor:pointer;
-    box-shadow:0 8px 16px rgba(255,77,134,.35);
+    box-shadow:0 8px 16px rgba(255,77,134,.28);
   }
   .btn.ghost{
     background:transparent;
@@ -61,223 +88,160 @@
     border:2px solid #ffb0c7;
     box-shadow:none;
   }
-
-  /* Scenes */
   .scene{display:none;}
   .scene.active{display:block;animation:fade .45s ease-out both}
   @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-
-  /* Rose scene */
-  .rose-box{
-    text-align:center;
-    padding:40px 10px;
-    color:#fff;
-  }
-  .rose-text{font-size:26px;text-shadow:0 3px 8px rgba(0,0,0,.25)}
-  .rose{width:120px;height:120px;margin:18px auto;cursor:pointer;display:block}
-  .pulse{animation:pulse 1.6s infinite}
-  @keyframes pulse{
-    0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)}
-  }
-
-  /* Letter scene */
-  .letter{
-    font-size:20px;
-    line-height:1.9;
-    color:#503047;
-  }
-
-  /* Memories scene */
-  .memories-title{
-    text-align:center;
-    font-size:30px;
-    color:#7d2251;
-    margin-bottom:14px;
-  }
-  .video-embed{
-    border-radius:14px; overflow:hidden; background:#000;
-    box-shadow:0 12px 30px rgba(0,0,0,.25);
-  }
-  iframe{width:100%;height:235px;border:0;display:block}
-
-  /* Always scene */
-  .big-title{
-    text-align:center;
-    font-size:44px;
-    color:#7d2251;
-    margin:10px 0 16px;
-  }
-  .bows{
-    position:relative; height:160px; overflow:hidden;
-  }
-  .bow{
-    position:absolute; font-size:28px; animation:fall 6s linear infinite;
-    opacity:.8;
-  }
-  @keyframes fall{
-    0%{transform:translateY(-40px) scale(1)} 
-    100%{transform:translateY(200px) scale(.9); opacity:.2}
-  }
-
-  .footer-note{margin-top:8px;color:#8d6c7d;text-align:center;font-size:13px}
+  .rose-box{text-align:center;padding:36px 10px;color:#fff;background:linear-gradient(180deg,#ffc1d1,#f7a7bd);border-radius:12px}
+  .rose-text{font-size:24px;text-shadow:0 3px 8px rgba(0,0,0,.18);margin-bottom:6px}
+  .rose-svg{width:120px;height:120px;margin:6px auto;display:block;cursor:pointer}
+  .letter{font-size:18px;line-height:1.9;color:#503047}
+  .memories-title{text-align:center;font-size:28px;color:#7d2251;margin-bottom:12px}
+  .video-embed{border-radius:14px;overflow:hidden;background:#000;box-shadow:0 10px 22px rgba(0,0,0,.18)}
+  iframe{width:100%;height:230px;border:0;display:block}
+  .big-title{text-align:center;font-size:42px;color:#7d2251;margin:10px 0 14px}
   .row{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .footer-note{margin-top:10px;color:#8d6c7d;text-align:center;font-size:13px}
+  input::placeholder{color:#c37b95}
+  @media (max-width:420px){ .letter{font-size:16px} .big-title{font-size:32px} }
 </style>
 </head>
 <body>
-  <div class="wrap">
-    <!-- Scene 1: Password -->
-    <section class="scene active" id="s1">
-      <div class="card">
-        <h2 style="font-size:26px;color:#7d2251;">ادخلي كلمة السر 💗</h2>
-        <p class="subtitle">اكتبي السر الصغير بتاعنا عشان نفتـح الرسالة</p>
-        <input id="pw" class="input" placeholder="Enter your secret…" type="password" inputmode="text">
-        <div class="row">
-          <button class="btn" id="unlock">Unlock 💞</button>
-        </div>
-      </div>
-    </section>
+<!-- Fullscreen roses container -->
+<div class="roses-bg" id="rosesBg" aria-hidden="true"></div>
 
-    <!-- Scene 2: Tap the rose -->
-    <section class="scene" id="s2">
-      <div class="card rose-box" style="background:linear-gradient(180deg,#ffc1d1,#f7a7bd)">
-        <div class="rose-text">دوسي على الوردة</div>
-        <!-- Simple rose SVG -->
-        <svg class="rose pulse" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0" stop-color="#ff6a8d"/>
-              <stop offset="1" stop-color="#e03162"/>
-            </linearGradient>
-          </defs>
-          <g>
-            <path fill="url(#g)" d="M64 12c18 0 26 12 26 20s-8 16-26 16S38 44 38 32s8-20 26-20z"/>
-            <path fill="#e5356e" d="M86 36c8 4 14 12 14 20 0 12-14 22-36 22S28 68 28 56c0-8 6-16 14-20 6 8 18 12 22 12s16-4 22-12z"/>
-            <rect x="60" y="78" width="8" height="36" rx="4" fill="#2f9e44"/>
-            <path fill="#37b24d" d="M64 86c-10 8-22 12-30 10 8-10 18-14 30-10z"/>
-            <path fill="#2f9e44" d="M64 92c10 8 22 12 30 10-8-10-18-14-30-10z"/>
-          </g>
-        </svg>
-        <button class="btn ghost" id="roseHint">لو مشتغلتش الوردة اضغطي هنا</button>
-      </div>
-    </section>
+<div class="wrap">
+  <!-- Scene 1: password -->
+  <section class="scene active" id="s1">
+    <div class="card">
+      <h2>ادخل كلمة السر 🌹</h2>
+      <p class="subtitle">اكتب السر اللى نتفقنا عليه</p>
+      <input id="pw" class="input" placeholder="اكتب هنا…" type="password" autocomplete="off">
+      <div class="row"><button class="btn" id="unlock">فتح</button></div>
+    </div>
+  </section>
 
-    <!-- Scene 3: Letter -->
-    <section class="scene" id="s3">
-      <div class="card">
-        <div class="letter">
-          من أول يوم عرفتك وأنا حاسس إن حياتي بقت أحلى. ضحكتك بتخلّيني أنسى أي هم،
-          وكلامك بيدّيني طاقة وحُب. إنتِ مش بس جزء من حياتي، إنتِ حياتي كلها.
-          قلبي ليكي، وهفضل أحبّك طول العمر 💗
-        </div>
-        <div class="row">
-          <button class="btn" data-next>التالي 💞</button>
-        </div>
-      </div>
-    </section>
+  <!-- Scene 2: tap rose -->
+  <section class="scene" id="s2">
+    <div class="card rose-box">
+      <div class="rose-text">دوس على الوردة</div>
+      <!-- simple rose SVG -->
+      <svg class="rose-svg" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="rose">
+        <defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#ff6a8d"/><stop offset="1" stop-color="#e03162"/></linearGradient></defs>
+        <g>
+          <path fill="url(#g)" d="M64 12c18 0 26 12 26 20s-8 16-26 16S38 44 38 32s8-20 26-20z"/>
+          <path fill="#e5356e" d="M86 36c8 4 14 12 14 20 0 12-14 22-36 22S28 68 28 56c0-8 6-16 14-20 6 8 18 12 22 12s16-4 22-12z"/>
+          <rect x="60" y="78" width="8" height="36" rx="4" fill="#2f9e44"/>
+          <path fill="#37b24d" d="M64 86c-10 8-22 12-30 10 8-10 18-14 30-10z"/>
+        </g>
+      </svg>
+      <div style="margin-top:8px"><button class="btn ghost" id="roseHint">لو ما اشتغلتش اضغط هنا</button></div>
+    </div>
+  </section>
 
-    <!-- Scene 4: Memories + song -->
-    <section class="scene" id="s4">
-      <div class="card">
-        <div class="memories-title">🎀 Our Memories</div>
-        <div class="video-embed">
-          <!-- YouTube embed; تبدّلي الرابط لو عايزة -->
-          <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowfullscreen
-                  src="https://www.youtube.com/embed/nyuo9-OjNNg?rel=0&modestbranding=1"></iframe>
-        </div>
-        <div class="row">
-          <button class="btn" data-next>التالي 💞</button>
-        </div>
+  <!-- Scene 3: letter -->
+  <section class="scene" id="s3">
+    <div class="card">
+      <div class="letter">
+        من أول يوم عرفتك وأنا حاسس إن حياتي بقت أحلى. ضحكتك بتخلّيني أنسى أي هم،
+        وكلامك بيدّيني طاقة وحُب. إنتِ مش بس جزء من حياتي، إنتِ حياتي كلها.
+        قلبي ليكي، وهفضل أحبّك طول العمر 🌹
       </div>
-    </section>
+      <div class="row"><button class="btn" data-next>التالي</button></div>
+    </div>
+  </section>
 
-    <!-- Scene 5: Always -->
-    <section class="scene" id="s5">
-      <div class="card" style="background:linear-gradient(180deg,#ffd6e3,#ffc1d6)">
-        <div class="big-title">على طول 🎀</div>
-        <p style="text-align:center;margin:0 0 8px;color:#6b2a4f">مهما الدنيا ودّتنا فين… هتفضلي أغلى حد عندي.</p>
-        <div class="bows" id="bows"></div>
-        <div class="row">
-          <button class="btn" data-next>التالي 💞</button>
-        </div>
+  <!-- Scene 4: memories + song (YouTube) -->
+  <section class="scene" id="s4">
+    <div class="card">
+      <div class="memories-title">🎀 Our Memories</div>
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?rel=0" allow="accelerometer; autoplay; encrypted-media; clipboard-write; picture-in-picture" allowfullscreen></iframe>
       </div>
-    </section>
+      <div class="row"><button class="btn" data-next>التالي</button></div>
+    </div>
+  </section>
 
-    <!-- Scene 6: Final + Reset -->
-    <section class="scene" id="s6">
-      <div class="card">
-        <div class="letter" style="text-align:center">
-          أماني وبيتي اللي بارتاح فيه… هو انتي. لو زعلتك في يوم، سامحيني.
-          نبدأ صفحة جديدة؟ 💗
-        </div>
-        <div class="row">
-          <button class="btn" id="resetBtn">إعادة 🎀</button>
-          <button class="btn ghost" id="shareWa">مشاركة واتساب</button>
-        </div>
-        <p class="footer-note">مصمم بحب — عدّلي الكلام واللون من الكود لو حابة</p>
+  <!-- Scene 5: always -->
+  <section class="scene" id="s5">
+    <div class="card" style="background:linear-gradient(180deg,#ffd6e3,#ffc1d6)">
+      <div class="big-title">على طول 🌹</div>
+      <p style="text-align:center;margin:0 0 8px;color:#6b2a4f">مهما الدنيا ودّتنا فين… هتفضلي أغلى حد عندي.</p>
+      <div class="row"><button class="btn" data-next>التالي</button></div>
+    </div>
+  </section>
+
+  <!-- Scene 6: final -->
+  <section class="scene" id="s6">
+    <div class="card">
+      <div class="letter" style="text-align:center">
+        أماني وبيتي اللي بارتاح فيه… هو انتي. لو زعلتك في يوم، سامحيني.
+        نبدأ صفحة جديدة؟ 🌹
       </div>
-    </section>
-  </div>
+      <div class="row"><button class="btn" id="resetBtn">إعادة</button><button class="btn ghost" id="shareWa">مشاركة واتساب</button></div>
+      <p class="footer-note">عملتها لك بسرعة — لو عايز أي تعديل ابعتلي</p>
+    </div>
+  </section>
+</div>
 
 <script>
-  // --------- Settings ---------
-  const PASSWORD = (new URLSearchParams(location.search).get('p')) || 'love'; // غيريها لو عايزة
-  const scenes = Array.from(document.querySelectorAll('.scene'));
+// Password requested by user
+const PASSWORD = '18/8/2023';
 
-  function go(i){
-    scenes.forEach((s,idx)=>s.classList.toggle('active', idx===i-1));
-    if(i===5) spawnBows();
+const scenes = Array.from(document.querySelectorAll('.scene'));
+
+function go(i){
+  scenes.forEach((s,idx)=>s.classList.toggle('active', idx===i-1));
+}
+
+// Unlock button
+document.getElementById('unlock').addEventListener('click', ()=>{
+  const val = document.getElementById('pw').value.trim();
+  if(val === PASSWORD){
+    go(2);
+  }else{
+    alert('كلمة السر غلط 😅');
   }
+});
 
-  // Step 1 unlock
-  document.getElementById('unlock').addEventListener('click', ()=>{
-    const val = document.getElementById('pw').value.trim();
-    if(val.toLowerCase() === PASSWORD.toLowerCase()){
-      go(2);
-    }else{
-      alert('كلمة السر غلط 😅');
-    }
-  });
+// Rose interactions
+document.querySelector('.rose-svg').addEventListener('click', ()=>go(3));
+document.getElementById('roseHint').addEventListener('click', ()=>go(3));
+document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click', ()=>{
+  const curr = scenes.findIndex(s=>s.classList.contains('active'));
+  go(curr+2);
+}));
+document.getElementById('resetBtn').addEventListener('click', ()=>go(1));
+document.getElementById('shareWa').addEventListener('click', ()=>{
+  const msg = encodeURIComponent('🌹 شوف الصفحة اللى عملتها لك: ' + location.href);
+  window.open('https://wa.me/?text='+msg,'_blank');
+});
 
-  // Step 2 rose
-  const goRose = ()=>go(3);
-  document.querySelector('.rose').addEventListener('click', goRose);
-  document.getElementById('roseHint').addEventListener('click', goRose);
-
-  // Next buttons
-  document.querySelectorAll('[data-next]').forEach(btn=>btn.addEventListener('click', ()=>{
-    const activeIdx = scenes.findIndex(s=>s.classList.contains('active'));
-    go(activeIdx+2);
-  }));
-
-  // Reset
-  document.getElementById('resetBtn').addEventListener('click', ()=>go(1));
-
-  // WhatsApp share
-  document.getElementById('shareWa').addEventListener('click', ()=>{
-    const text = encodeURIComponent('💗 شايفة الصفحة اللي عملتهالك؟ فتحت قلبي فيها.\n\nلو موافقة نبدأ صفحة جديدة — ردي عليا. ' + location.href);
-    window.open('https://wa.me/?text='+text,'_blank');
-  });
-
-  // bows rain
-  function spawnBows(){
-    const box = document.getElementById('bows');
-    box.innerHTML = '';
-    const W = box.clientWidth;
-    const count = 16;
-    for(let i=0;i<count;i++){
-      const span = document.createElement('span');
-      span.className='bow';
-      span.textContent='🎀';
-      span.style.left = Math.random()*W + 'px';
-      span.style.animationDelay = (Math.random()*3)+'s';
-      span.style.animationDuration = (4+Math.random()*4)+'s';
-      box.appendChild(span);
-    }
+// Spawn falling roses across full screen
+function spawnRoses(count=24){
+  const box = document.getElementById('rosesBg');
+  box.innerHTML = '';
+  const W = window.innerWidth;
+  for(let i=0;i<count;i++){
+    const span = document.createElement('span');
+    span.className = 'rose';
+    span.textContent = '🌹';
+    // random horizontal start
+    span.style.left = Math.random()*W + 'px';
+    // random size
+    const size = 18 + Math.random()*22;
+    span.style.fontSize = size + 'px';
+    // random duration 5-12s
+    const dur = 5 + Math.random()*7;
+    span.style.animationDuration = dur + 's';
+    // random delay so they don't fall all at once
+    span.style.animationDelay = (Math.random()*-10) + 's';
+    // slight horizontal drift using translateX via CSS variable (use inline transform)
+    box.appendChild(span);
   }
-
-  // start at scene 1
-  go(1);
+}
+// initial spawn and re-spawn when scene 5 shows
+spawnRoses(26);
+window.addEventListener('resize', ()=>spawnRoses(26));
 </script>
 </body>
 </html>
