@@ -201,25 +201,43 @@
     </div>
   </section>
 
-  <!-- Scene 4: memories + song (YouTube) + slider -->
+    <!-- Scene 4: memories + song (YouTube) + slider -->
   <section class="scene" id="s4">
     <div class="card">
       <div class="memories-title">🎵 wanna be yours</div>
-      <div class="media-grid">
-        <div class="video-embed">
-          <iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?rel=0" allow="accelerometer; autoplay; encrypted-media; clipboard-write; picture-in-picture" allowfullscreen></iframe>
-        </div>
 
-        <!-- Slider -->
-        <div class="slider" id="slider">
-          <img class="slide-img" src="https://i.ibb.co/NnZsHYKJ/image.jpg" alt="memory 1" style="opacity:1">
-          <img class="slide-img" src="https://i.ibb.co/tkCZdy3/image.jpg" alt="memory 2" style="opacity:0">
-          <img class="slide-img" src="https://i.ibb.co/B27MdPFQ/image.jpg" alt="memory 3" style="opacity:0">
-          <img class="slide-img" src="https://i.ibb.co/v42LWyrm/image.jpg" alt="memory 4" style="opacity:0">
-          <button class="arrow prev" id="prevBtn" aria-label="previous">‹</button>
-          <button class="arrow next" id="nextBtn" aria-label="next">›</button>
-        </div>
+      <!-- الفيديو -->
+      <div class="video-embed" style="margin-bottom:20px;">
+        <iframe src="https://www.youtube.com/embed/nyuo9-OjNNg?rel=0"
+                allow="accelerometer; autoplay; encrypted-media; clipboard-write; picture-in-picture"
+                allowfullscreen></iframe>
       </div>
+
+      <!-- Slider تحت الفيديو -->
+      <div class="slider" id="slider" style="width:100%; max-width:460px; margin:auto; aspect-ratio:1/1;">
+
+        <img class="slide-img"
+             src="https://i.ibb.co/NnZsHYKJ/image.jpg"
+             alt="memory 1" style="opacity:1">
+
+        <img class="slide-img"
+             src="https://i.ibb.co/tkCZdy3/image.jpg"
+             alt="memory 2" style="opacity:0">
+
+        <img class="slide-img"
+             src="https://i.ibb.co/B27MdPFQ/image.jpg"
+             alt="memory 3" style="opacity:0">
+
+        <img class="slide-img"
+             src="https://i.ibb.co/v42LWyrm/image.jpg"
+             alt="memory 4" style="opacity:0">
+
+        <!-- الأسهم -->
+        <button class="arrow prev" id="prevBtn" aria-label="previous">‹</button>
+        <button class="arrow next" id="nextBtn" aria-label="next">›</button>
+
+      </div>
+
       <div class="row"><button class="btn" data-next>دوسي هنا</button></div>
     </div>
   </section>
