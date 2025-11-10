@@ -294,7 +294,7 @@ function spawnRoses(count=26){
   }
 }
 spawnRoses(28);
-window.addEventListener('resize', ()=>spawnRoses(28));
+window.addEventListener('resize', ()=>setTimeout(()=>spawnRoses(28), 200));
 
 /* Slider logic (wrap-around) */
 const imgs = Array.from(document.querySelectorAll('#slider .slide-img'));
